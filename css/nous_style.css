@@ -1,0 +1,74 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.navbar{
+    height: 15vh;
+    width: 100%;
+    background: linear-gradient(90deg, #545AA7 0%, #76ABDF 35%, #545AA7 100%); 
+    background-size: cover;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: relative;
+    box-sizing: border-box;
+    margin: auto;
+    display: flex;
+    align-items:center;
+}
+
+.logo{
+    width: 15%;
+    cursor: pointer;
+    margin-top: 45px;
+}
+
+nav{
+    flex: 1;
+    padding-left:700px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 8px 20px;
+}
+
+nav ul li a{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.nous{
+    display: flex;
+    flex-direction: column;
+}
+
+.nous .title{
+    align-items: center;
+}
+
+.nous .description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.carte{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin-right: 100px;
+}
+
+.carte .image{
+    width: 350px;
+    height: 300px;
+}

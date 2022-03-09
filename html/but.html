@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>Notre but</title>
+        <link rel="stylesheet" href="../css/but.css">
+    </head>
+
+<body>
+    <!--Menu part-->
+    <div class="navbar">
+        <img src="../img/logo.png" alt="" class="logo">
+        <nav>
+            <ul>
+                <li><a href="../index.html" >Application</a></li>
+                <li><a href="but.html" >But</a></li>
+                <li><a href="nous.html" >Qui sommes-nous</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="article reverse">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="oiseau qui chante" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/arousalandpublicdomain-7400657/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3362405">Marta Simon</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3362405">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Introduction</h1>
+            <p>projet consiste à identifier les espèces d’oiseaux à leur chant. 
+            Pour ce faire, nous utilisons l'intelligence artificielle.  Les deux algorithmes testés seront détaillés plus bas.
+            Afin de travailler avec une quantité de données raisonnables, nous avons limité le nombre d'espèces. En effet 
+            notre programme est capable de reconnaitre les 10 oiseaux les plus présents en Belgique. Tout autre son sera considérée comme du bruit. 
+            Notons que nous pouvons aisement augmenter le nombre d'espèce si nous possedons plus de mémoire et des CPU plus performants.
+            </p>
+        </div>
+    </div>
+
+    <div class="article">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Collection de données</h1>
+            <p>Les ressources disponibles sur internet, pour les chants d’oiseaux, ne sont pas nombreuses. Il est donc difficiles de trouver des bases de données complètent.
+                Nous avons donc décidé d’utiliser le site web <a href="https://xeno-canto.org">Xeno-canto</a>.  Ce dernier répertorie une grande majoritée d’espèces d’oiseaux du monde entier, et possède une grande communautée active de scientifiques et d’amateur. De plus, chaque sons à des caracteristiques bien précises, tel que : le lieux d’enregistrement, la qualitée du son, la durée du son … Qui, comme vous le verez, est un outil très précieux.
+                Premièrement, nous avons écrit un programme qui télécharge automatiquement les sons via l'API de Xeno-Canto. Dans le cadre de ce projet, nous avons décidé de nous limiter aux 10 espèces ayant le plus de données en Belgique. Grâce aux caractéristiques disponible pour chaque son, nous avons sélectionné nos données comme suit : des sons entre 0 et 30 secondes, des sons dont la qualités est de type A, B ou C (Fort et bonne qualité, son plus faible avec peu d’interférence, son avec plus d’interférence), et dont le type du son est qualifié de “call”. Nous avons choisis le type de son “call”  car il est, entre autre, plus bref et plus simple [1].
+                Au total, nous avons pu récolter x sons : xxx pour la corneille noire, xxx pour la ?,xxx pour la ?, xxx pour la ?, xxx pour la ?, xxx pour la ?, xxx pour la ?, xxx pour la ?, xxx pour la ?, xxx pour la ?.
+                PLOT nb de sons par oiseau
+            </p>
+        </div>
+    </div>
+
+    <div class="article reverse">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Nettoyage des sons collectés</h1>
+            <p>
+                Une fois les données récoltées, il faut les nettoyer, les rendre plus facilement utilisable par notre algorithme. Le nettoyage, dans notre cas, consiste à produire des sons entre 1 et 10 sec afin d’avoir des spectrogrammes les moins déformés possibles.
+                Les étapes pour un seul son sont les suivantes : 
+                1. Enlever les silences dans le sons et séparer le son en fonction des silences. On obtient ainsi plusieurs petits sons.
+                2. Si parmis ces sons obtenus, certains sons sont de durée inférieur à 1sec, nous les assemblons et/ou rajoutons un peu de silence, afin d’obtenir un son de durée au moins 1 sec.
+                3. Si certains sons font, toujours, plus de 10 sec nous les séparons en 2 lorsqu’ils sont inférieurs à 20sec et en 3 sinon.        
+            </p>
+        </div>
+    </div>
+
+    <div class="article">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Transformation des sons d'oiseaux</h1>
+            <p>
+                Avant des transformer notre son en spectrogramme, nous avons d’abord changé la fréquence d’échantillons (samples rate) à 44100 Hz [2], et si ce n’était pas le cas, passé le son en mono ( son sur  un seul channel ).
+                Ensuite, chaque son est transformé en mel-spectrogramme, que l’on converti en decibel.
+                Pour finir on normalise le spectrogramme obtenu.
+                *IMAGE SPECTRO*
+            </p>
+        </div>
+    </div>
+
+    <div class="article reverse">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Algorithme de réseaux neuronaux</h1>
+            <p>
+                <!--A faireeeeee!!!!!-->
+            </p>
+        </div>
+    </div>
+
+    <div class="article">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Création et entrainement de l'IA</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi modi impedit blanditiis quasi suscipit id aliquam sit dolorum consequuntur vel, rerum quidem quo nihil natus reiciendis fuga deleniti, voluptatem non!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maiores a nostrum quia, tenetur quam ipsum amet. Repellat, ratione vero aperiam sit nam veniam quo dolor hic labore excepturi facere.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut quia voluptatem accusantium? Cum ut optio et nostrum, ad omnis voluptate, natus animi numquam quo enim maxime. Quisquam, hic voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum optio ea nobis atque. Similique sequi rem libero odio ex officia odit. Inventore temporibus architecto est, omnis odio dignissimos excepturi harum!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto et fugiat sit libero veritatis enim dolor exercitationem? Deleniti inventore est voluptatem deserunt quis perspiciatis nihil amet esse, laudantium delectus!
+            </p>
+        </div>
+    </div>
+
+    <div class="article reverse">
+        <div class="image">
+            <img src="../img/birdsong.png" alt="logo base de donnée" class="illustration">
+            <p>Image par <a href="https://pixabay.com/fr/users/io-images-1096650/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">IO-Images</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4941301">Pixabay</a></p>
+        </div>
+        <div class="texte">
+            <h1 class="titre">Résultats</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi modi impedit blanditiis quasi suscipit id aliquam sit dolorum consequuntur vel, rerum quidem quo nihil natus reiciendis fuga deleniti, voluptatem non!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maiores a nostrum quia, tenetur quam ipsum amet. Repellat, ratione vero aperiam sit nam veniam quo dolor hic labore excepturi facere.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut quia voluptatem accusantium? Cum ut optio et nostrum, ad omnis voluptate, natus animi numquam quo enim maxime. Quisquam, hic voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum optio ea nobis atque. Similique sequi rem libero odio ex officia odit. Inventore temporibus architecto est, omnis odio dignissimos excepturi harum!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto et fugiat sit libero veritatis enim dolor exercitationem? Deleniti inventore est voluptatem deserunt quis perspiciatis nihil amet esse, laudantium delectus!
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
