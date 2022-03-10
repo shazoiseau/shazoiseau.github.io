@@ -30,6 +30,12 @@ nav{
     padding-left:700px;
 }
 
+nav ul{
+    border-style: dotted;
+    border-color: white;
+    width: 100%;
+}
+
 nav ul li{
     display: inline-block;
     list-style: none;
