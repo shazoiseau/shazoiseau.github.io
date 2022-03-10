@@ -45,30 +45,30 @@ a{
     color: black;
 }
 
-.nous{
-    display: flex;
-    flex-direction: column;
-}
 
-.nous .title{
-    align-items: center;
-}
 
-.nous .description{
+.description{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 150px;
+    margin-left: 100px;
 }
 
 .carte{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: black;
-    margin-right: 100px;
 }
 
 .carte .image{
-    width: 350px;
-    height: 300px;
+    width: 400px;
+    height: 320px;
+}
+
+.carte p{
+    width:70%;
 }
