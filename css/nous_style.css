@@ -26,8 +26,13 @@ body{
 }
 
 nav{
-    flex: 1;
-    padding-left:700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left:50%;
+    border-style: dashed;
+    border-color: black;
 }
 
 nav ul{
