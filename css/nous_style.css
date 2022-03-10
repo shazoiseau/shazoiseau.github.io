@@ -14,7 +14,7 @@ body{
     padding-right: 5%;
     position: relative;
     box-sizing: border-box;
-    margin: auto;
+
     display: flex;
     align-items:center;
 }
@@ -31,13 +31,9 @@ nav{
     align-items: center;
     justify-content: center;
     padding-left:50%;
-    border-style: dashed;
-    border-color: black;
 }
 
 nav ul{
-    border-style: dotted;
-    border-color: white;
     width: 100%;
 }
 
