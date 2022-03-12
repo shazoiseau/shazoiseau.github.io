@@ -1,8 +1,8 @@
 body{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial,Courier, monospace;
     margin: 0;
     padding: 0;
-    color: white;
+    color: black;
 }
 
 .navbar{
@@ -50,6 +50,11 @@ nav ul li a{
 a{
     text-decoration: none;
     color: black;
+}
+
+a:hover{
+    text-decoration-line: underline;
+    text-decoration-color: white;
 }
 
 

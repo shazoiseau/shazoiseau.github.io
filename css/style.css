@@ -1,5 +1,5 @@
 body{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial,Courier, monospace;
     margin: 0;
     padding: 0;
     color: black;
@@ -14,7 +14,7 @@ body{
     padding-right: 5%;
     position: relative;
     box-sizing: border-box;
-    margin: auto;
+
     display: flex;
     align-items:center;
 }
@@ -26,8 +26,15 @@ body{
 }
 
 nav{
-    flex: 1;
-    padding-left:700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left:50%;
+}
+
+nav ul{
+    width: 100%;
 }
 
 nav ul li{
@@ -45,26 +52,59 @@ a{
     color: black;
 }
 
-
-.video{
-    margin-top: 100px;
-    margin-left: 100px;
-    display: flex;
-    align-items: center;
+a:hover{
+    text-decoration-line: underline;
+    text-decoration-color: white;
 }
 
-video{
-    width: 2000px;
+
+.content{
+    margin-top: 5%;
+    margin-left: 2%;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.video video{
+    width: 970px;
     height: 600px;
 }
-.legende{
+
+
+.video{
+    
     display: flex;
     flex-direction: column;
-}
-.legende ul li{
-    display: inline-block;
-    list-style: none;
-    margin: 8px 20px;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
+.video p{
+    width: 500px;
+}
+
+.legende{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.legende ul li{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 4%;
+}
+
+.legende ul li a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: black;
+}
 

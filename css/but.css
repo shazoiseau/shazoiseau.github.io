@@ -1,7 +1,8 @@
 body{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial,Courier, monospace;
     margin: 0;
     padding: 0;
+    color: black;
 }
 
 .navbar{
@@ -13,10 +14,9 @@ body{
     padding-right: 5%;
     position: relative;
     box-sizing: border-box;
-    margin: auto;
+
     display: flex;
     align-items:center;
-    color: white;
 }
 
 .logo{
@@ -26,8 +26,15 @@ body{
 }
 
 nav{
-    flex: 1;
-    padding-left:700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left:50%;
+}
+
+nav ul{
+    width: 100%;
 }
 
 nav ul li{
@@ -45,8 +52,13 @@ a{
     color: black;
 }
 
+a:hover{
+    text-decoration-line: underline;
+    text-decoration-color: white;
+}
+
 .image{
-    width: 25%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,8 +67,8 @@ a{
 
 
 .illustration{
-    width: 400px;
-    height: 230px;
+    width: 550px;
+    height: 250px;
 }
 
 .article{
@@ -69,12 +81,34 @@ a{
 
 .reverse{
     flex-direction: row-reverse;
+    
 }
 
+.texte p{
+    text-align: right;
+    margin-right: 20px;
+}
+
+.texte a:hover{
+    text-decoration-line: underline;
+    text-decoration-color: black;
+}
+
+.reverse p{
+    text-align: left;
+    margin-left: 5px;
+}
+
+
 .texte{
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.illustration .res{
+    width: 700px;
+    height: 400px;
 }

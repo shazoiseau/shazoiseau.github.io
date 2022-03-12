@@ -2,7 +2,14 @@
     <head>
         <title>Notre but</title>
         <link rel="stylesheet" href="../css/but.css">
-    </head>
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon_io/site.webmanifest">
+
+        <script src="https://kit.fontawesome.com/a25dac462d.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
 
 <body>
     <!--Menu part-->
@@ -10,9 +17,9 @@
         <img src="../img/logo.png" alt="" class="logo">
         <nav>
             <ul>
-                <li><a href="../index.html" >Application</a></li>
-                <li><a href="but.html" >But</a></li>
-                <li><a href="nous.html" >Qui sommes-nous</a></li>
+                <li><a href="../index.html" ><i class="fa-solid fa-music"></i> Application</a></li>
+                <li><a href="../html/but.html" ><i class="fa-solid fa-feather-pointed"></i> But</a></li>
+                <li><a href="../html/nous.html" ><i class="fa-solid fa-users"></i> Qui sommes-nous</a></li>
             </ul>
         </nav>
     </div>
@@ -65,12 +72,12 @@
 
     <div class="article reverse">
         <div class="image">
-            <img src="../img/duree_sons.png" alt="logo base de donnée" class="illustration">
+            <img src="../img/nb_sons_post_transf.png" alt="logo base de donnée" class="illustration">
             <p>Graphe des durées de sons nettoyés</p>
         </div>
         <div class="texte">
             <h1 class="titre">Nettoyage des données</h1>
-            <p>
+            <p class="align">
                 Une fois les données récoltées, il faut les nettoyer pour les rendre plus facilement utilisable par notre algorithme. Le nettoyage, dans notre cas, consiste à produire des sons entre 1 et 10 secondes afin d’avoir des spectrogrammes les moins déformés possibles.
                 [TODO qu est ce qu’un spectrogramme]
                 Les étapes pour un seul son sont les suivantes :
@@ -83,8 +90,8 @@
 
     <div class="article">
         <div class="image">
-            <img src="../img/spectrogramme.png" alt="logo base de donnée" class="illustration">
-            <p>Spectrogram d'un sons de Corneille</p>
+            <img src="../img/spectrogram.png" alt="logo base de donnée" class="illustration">
+            <p>Spectrogram d'un sons d'une Corneille noire</p>
         </div>
         <div class="texte">
             <h1 class="titre">Transformation des données</h1>
@@ -162,7 +169,7 @@
 
     <div class="article reverse">
         <div class="image">
-            <img src="../img/resultat.png" alt="logo base de donnée" class="illustration">
+            <img src="../img/resultat.png" alt="logo base de donnée" class="illustration res">
             <p>Résultat du CNN</p>
         </div>
         <div class="texte">
