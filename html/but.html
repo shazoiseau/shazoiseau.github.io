@@ -30,23 +30,27 @@
             <p>Image par <a href="https://pixabay.com/fr/users/arousalandpublicdomain-7400657/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3362405">Marta Simon</a> de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3362405">Pixabay</a></p>
         </div>
         <div class="texte">
-            <h1 class="titre">Introduction</h1>
+            <h1 class="titre" align=center>Introduction</h1>
             <p>Notre projet consiste à classifier des oiseaux en fonctions de leur chant. Il faut donc un algorithme capable d’apprendre, qu’on appelle le machine learning. Ce dernier définissant plusieurs catégories d’algorithmes différents :
-
-                • Apprentissage supervisé
-                • Apprentissage non supervisé
-                • Apprentissage semi-supervisé
-                • Apprentissage par renforcement
-                
-                L’algorithme supervisé utilise un jeu de données connu et étiqueté, c’est à dire que l’on sait à quoi correspond notre donnée. Son but est d’utiliser ces données afin de pouvoir prédire des résultats sur des nouvelles données inconnues. Pour y arriver, l’algorithme passe par une étape d’entrainement.  L’apprentissage supervisé se distingue par l’apprentissage de régression et de classification. Des algorithmes connus de l’apprentissage supervisé sont : réseau de neurone, random forest, linear régression … C’est exactement ce dont on a besoin ! Pour plus d’information [4][5].
-                
-                Nous avons ainsi choisi comme algorithme :
-                    • Réseau de neurone convolutif
-                
-                Mais avant de commencer à entrainer notre modèle, il nous faut des données, beaucoup de données, ainsi qu’un bon traitement (pre-processing). Nous avons suivi plusieurs étapes lors de ce traitement :
-                    1) Collection de données
-                    2) Nettoyage des données
-                    3) Transformation des données
+            <ul style="list-style-type: circle;">
+                <li>Apprentissage supervisé
+                <li>Apprentissage non supervisé
+                <li>Apprentissage semi-supervisé
+                <li>Apprentissage par renforcement
+            </ul>
+            L’algorithme supervisé utilise un jeu de données connu et étiqueté, c’est à dire que l’on sait à quoi correspond notre donnée. Son but est d’utiliser ces données afin de pouvoir prédire des résultats sur des nouvelles données inconnues. Pour y arriver, l’algorithme passe par une étape d’entrainement. L’apprentissage supervisé se distingue par l’apprentissage de régression et de classification. Des algorithmes connus de l’apprentissage supervisé sont : réseau de neurone, random forest, linear régression… C’est exactement ce dont on a besoin !
+            
+            Nous avons ainsi choisi comme algorithme le réseau de neurone convolutif.
+            
+            Mais avant de commencer à entrainer notre modèle, il nous faut des données, beaucoup de données, ainsi qu’un bon traitement (pre-processing). Nous avons suivi plusieurs étapes lors de ce traitement :
+            <ol>
+                <li>Collection de données
+                <li>Nettoyage des données
+                <li>Transformation des données
+            </ol>
+                    
+                    
+                    
             </p>
         </div>
     </div>
@@ -57,11 +61,13 @@
             <p>Nombre de sons téléchargé par espèce d'oiseau</p>
         </div>
         <div class="texte">
-            <h1 class="titre">Collection de données</h1>
-            <p>Les ressources disponibles sur internet, pour les chants d’oiseaux, ne sont pas nombreuses. Il est donc difficile de trouver des bases de données complètes.
+            <h1 class="titre" align=center>Collection de données</h1>
+            <p>Les ressources disponibles sur internet, pour les chants d’oiseaux, ne sont pas nombreuses. Il est donc difficile de
+                trouver des bases de données complètes.
                 Nous avons finalement décidé d’utiliser le site web <a href="https://xeno-canto.org">Xeno-canto</a> qui nous donne accès à une base de données acceptable.
                 Xeno-Canto répertorie une grande majorité d’espèces d’oiseaux du monde entier, et possède une grande communauté active de scientifiques et d’amateur. De plus, chaque son a des caractéristiques bien précises comme le lieu d’enregistrement, la qualité du son, la durée du son… Qui, comme vous le verrez, est un outil très précieux.
-                Premièrement, nous avons écrit un programme qui télécharge automatiquement les sons via le site web de Xeno-Canto. Dans le cadre de ce projet, nous avons décidé de nous limiter aux 10 espèces ayant le plus de données en Belgique. 
+                Premièrement, nous avons écrit un programme qui télécharge automatiquement les sons via le site web de  
+                <a style="color:blue" href="https://xeno-canto.org/">Xeno-Canto</a>. Dans le cadre de ce projet, nous avons décidé de nous limiter aux 10 espèces ayant le plus de données en Belgique. 
                 Grâce aux caractéristiques disponibles pour chaque son, nous avons sélectionné nos données comme suit : 
                 des sons entre 0 et 30 secondes, dont la qualité est de type A, B ou C (Fort et bonne qualité, 
                 son plus faible avec peu d’interférences, son avec plus d’interférences), et dont le type du son est qualifié de 
@@ -76,14 +82,15 @@
             <p>Graphe des durées de sons nettoyés</p>
         </div>
         <div class="texte">
-            <h1 class="titre">Nettoyage des données</h1>
+            <h1 class="titre" align=center>Nettoyage des données</h1>
             <p class="align">
                 Une fois les données récoltées, il faut les nettoyer pour les rendre plus facilement utilisable par notre algorithme. Le nettoyage, dans notre cas, consiste à produire des sons entre 1 et 10 secondes afin d’avoir des spectrogrammes les moins déformés possibles.
-                [TODO qu est ce qu’un spectrogramme]
                 Les étapes pour un seul son sont les suivantes :
-                    1. Couper le son en fonction des silences puis enlever ces silences. On obtient ainsi plusieurs petits sons.
-                    2. Si parmi ces sons obtenus, certains sont de durée inférieure à 1 seconde, nous les assemblons et/ou rajoutons un peu de silence, afin d’obtenir un son de durée au moins 1 seconde.
-                    3. Si certains sons font toujours plus de 10 secondes, nous les séparons en 2 lorsqu’ils sont inférieurs à 20 secondes et en 3 sinon.  
+                <ol>
+                    <li>Couper le son en fonction des silences puis enlever ces silences. On obtient ainsi plusieurs petits sons.
+                    <li>Si parmi ces sons obtenus, certains sont de durée inférieure à 1 seconde, nous les assemblons et/ou rajoutons un peu de silence, afin d’obtenir un son de durée au moins 1 seconde.
+                    <li>Si certains sons font toujours plus de 10 secondes, nous les séparons en 2 lorsqu’ils sont inférieurs à 20 secondes et en 3 sinon.
+                </ol> 
             </p>
         </div>
     </div>
@@ -91,13 +98,13 @@
     <div class="article">
         <div class="image">
             <img src="../img/spectrogram.png" alt="logo base de donnée" class="illustration">
-            <p>Spectrogram d'un sons d'une Corneille noire</p>
+            <p>Spectrogramme d'un son d'une Corneille noire</p>
         </div>
         <div class="texte">
-            <h1 class="titre">Transformation des données</h1>
+            <h1 class="titre" align=center>Transformation des données</h1>
             <p>
                 Le modèle que nous avons choisi fonctionne particulièrement bien avec des images. Il nous faut donc un moyen de représenter notre son sous forme d’image. C’est ce qu’on appelle un spectrogramme.
-                Avant des transformer le son en spectrogramme, nous avons d’abord changé la fréquence d’échantillons (sample rate) à 44100 Hz [2] et si ce n’était pas le cas, passé le son en mono (son sur un seul channel). 
+                Avant des transformer le son en spectrogramme, nous avons d’abord changé la fréquence d’échantillons (sample rate) à 44100 Hz et si ce n’était pas le cas, passé le son en mono (son sur un seul channel). 
                 Ensuite, chaque son est transformé en spectrogramme, que l’on converti en décibel.
                 Pour finir on normalise le spectrogramme obtenu.
             </p>
@@ -111,30 +118,33 @@
             <p>Exemple de max-pooling</p>
         </div>
         <div class="texte">
-            <h1 class="titre">Convolution</h1>
+            <h1 class="titre" align=center>Convolution</h1>
             <p>
-                Le réseau neuronal convolutif ou convolutional neural network (CNN) est un algorithme de réseau neuronal et se caractérise dans la reconnaissance d’image, plus particulièrement dans la détection d’objet, de pattern.
+                Le réseau neuronal convolutif ou convolutional neural network (CNN) est un algorithme de réseau neuronal et se caractérise dans la reconnaissance d’image, plus particulièrement dans la détection d’objet, de pattern. <hr>
 
-                Comment fonctionne le CNN ?
+                Comment fonctionne le CNN ? <hr>
                 
                 Dans sa forme la plus simple, un CNN prend une image en paramètre. Cette image est traitée et ensuite est classifiée en attribuant une probabilité sous différentes catégories.
                 
                 Architecture :
-                 2 parties
-                        1) L’extraction des patterns, grâce à l’étape de convolution
-                        2) La classification, grâce à un réseau de neurone
-                L’entrée (input) du réseau de neurone n’est autre que la sortie (output) de l’étape de convolution.
+                <ol>
+                    <li>L’extraction des patterns, grâce à l’étape de convolution
+                    <li>La classification, grâce à un réseau de neurone
+                </ol> 
+                L’entrée (input) du réseau de neurone n’est autre que la sortie (output) de l’étape de convolution. <hr>
                 
-                L’étape de convolution :
+                L’étape de convolution : <hr>
                 
-                L’étape de convolution est généralement constituée de plusieurs couches qui se suivent.  Il y a 2 types de couches : convolution et « pooling ».
+                Celle-ci est généralement constituée de plusieurs couches qui se suivent. Il y a 2 types de couches : convolution et « pooling ». <hr>
                 
-                Couche de convolution :
+                Couche de convolution : <hr>
+
                 Convolution, ici, représente une opération mathématique entre 2 fonctions qui exprime comment une fonction est modifiée par l’autre. Les 2 fonctions sont une image et un filtre, qui sont multipliés pour former une « feature map ». L’image représente donc une matrice de pixels de taille NxN et le filtre une matrice de taille plus petite, généralement 3x3 ou 5x5.
                 En d’autres termes, on prend notre image et un filtre de taille inférieur à notre image. Ensuite on glisse notre filtre le long de notre image. Un calcul est ainsi effectué afin de produire une feature map.
-                Ensuite cette feature map est soumise à une fonction d’activation, qui a pour rôle d’introduire de la non-linéarité dans notre modèle. La fonction ReLu est la plus utilisé, elle remplace simplement les valeurs négatives par des 0.
+                Ensuite cette feature map est soumise à une fonction d’activation, qui a pour rôle d’introduire de la non-linéarité dans notre modèle. La fonction ReLu est la plus utilisé, elle remplace simplement les valeurs négatives par des 0. 
+                <hr>
 
-                Pooling :
+                Pooling : <hr>
                 Le pooling est utilisé afin de réduire la feature map produite en diminuant le nombre de pixels et ainsi notre nombre de paramètres.
             </p>
         </div>
@@ -142,23 +152,30 @@
 
     <div class="article">
         <div class="image">
-            <img src="../img/neurones.png" alt="logo base de donnée" class="illustration">
-            <p>Répresentation d'un réseau de neurones</p>
+
+            <figure>
+                <img src="../img/neurones.png" alt="logo base de donnée" class="illustration">
+                <figcaption>Representation d'un réseau de neurones <hr>
+                Un neurone de couleur jaune foncé représente ici un neurone activé proche de 1. Et les liens entre les neurones qui ne sont pas représentés sont de poids 0, donc non représentés pour simplifier la visualisation.</figcaption>
+            </figure>
+
         </div>
         <div class="texte">
-            <h1 class="titre">Réseaux neuronaux</h1>
+            <h1 class="titre" align=center>Réseaux de neurones</h1>
             <p>
                 Un réseau de neurones peut être constitué de plusieurs couches de plusieurs neurones où chaque neurone d’une couche est connecté à chaque neurone de la couche suivante.
-                Un réseau de neurones est composé d’une couche d’entrée, qui est composée d’autant de neurones que l’image a de pixel.
-                Ensuite, il y a des couches cachées, que l’on peut voir comme des étapes qui servent à différencier des patterns de plus en plus importants dans notre image. Par exemple : des coins, des arrêtes, des arcs pour la première couche. Ensuite des formes géométriques comme un rond, un rectangle …
-                Pour finir, il y a une couche de sortie qui correspond à ce qu’on appelle des classes. C’est ce qu’on l’on souhaite trouver. Par exemple, dans notre cas la couche de sortie sera composée de 10 neurones représentant nos oiseaux.
-                Chaque neurone a une valeur, aussi nommée activation, qui lui est attribuée entre 0 et 1, et chaque lien entre deux neurones possède un poids de valeur positive ou négative. Les activations d’une couche vont servir à déterminer les activations de la couche suivante.
-                De façon plus visuelle, on peut voir chaque neurone comme une partie d’une image. Par exemple, dans la dernière couche cachée, chaque neurone activé devrait, une fois mis ensemble se rapprocher d’une image à déterminer. Prenons un exemple simple sur des fruits. Si une pomme est donnée, certains neurones seront plus ou moins activé en fonction de s’ils sont « proche » d’une partie de l’image. Voir exemple :
-                Un neurone de couleur jaune foncé représente ici un neurone activé proche de 1. Et les liens entre les neurones qui ne sont pas représentés sont de poids 0, donc non représentés pour simplifier la visualisation.
+                Un réseau de neurones est composé d’une couche d’entrée, qui est composée d’autant de neurones que l’image a de pixel. <hr>
 
-                Cette représentation n’est évidemment faite que pour illustrer.
+                Ensuite, il y a des couches cachées, que l’on peut voir comme des étapes qui servent à différencier des patterns de plus en plus importants dans notre image. Par exemple : des coins, des arrêtes, des arcs pour la première couche. Ensuite des formes géométriques comme un rond, un rectangle … <hr>
+
+                Pour finir, il y a une couche de sortie qui correspond à ce qu’on appelle des classes. C’est ce qu’on l’on souhaite trouver. Par exemple, dans notre cas la couche de sortie sera composée de 10 neurones représentant nos oiseaux.
+                Chaque neurone a une valeur, aussi nommée activation, qui lui est attribuée entre 0 et 1, et chaque lien entre deux neurones possède un poids de valeur positive ou négative. Les activations d’une couche vont servir à déterminer les activations de la couche suivante. <hr>
+
+                De façon plus visuelle, on peut voir chaque neurone comme une partie d’une image. Par exemple, dans la dernière couche cachée, chaque neurone activé devrait, une fois mis ensemble se rapprocher d’une image à déterminer. Prenons un exemple simple sur des fruits. Si une pomme est donnée, certains neurones seront plus ou moins activé en fonction de s’ils sont « proche » d’une partie de l’image. 
+                Cette représentation n’est évidemment faite que pour illustrer. <hr>
+
                 Chaque valeur d’un neurone est calculée en additionnant valeur * poids :
-                Dans certains cas cette valeur obtenue ne sera pas comprise entre 0 et 1. On utilise donc une fonction d’activation, tel que sigmoid ou ReLu afin de borner le résultat.
+                Dans certains cas cette valeur obtenue ne sera pas comprise entre 0 et 1. On utilise donc une fonction d’activation, tel que sigmoid ou ReLu afin de borner le résultat. <hr>
                 La dernière couche du réseau de neurones a une fonction d’activation softmax qui va permettre d’attribuer une probabilité pour chaque classe. La somme des probabilités obtenue sera égale à 1.
                 Lors de l’entrainement, à chaque fois que le modèle se trompe, ces poids sont ajustés afin de tendre vers un modèle de plus en plus précis.
             </p>
@@ -173,11 +190,12 @@
             <p>Résultat du CNN</p>
         </div>
         <div class="texte">
-            <h1 class="titre">Résultats</h1>
+            <h1 class="titre" align=center>Résultats</h1>
             <p>
                 Après l’entrainement, notre algorithme a +70% de sons bien classés.
                 Comme on peut le voir, certains oiseaux comme la corneille noire, la bergeronnette printanière ou le bec-croisé des sapins ont de bons résultats. Effectivement, la majorité des sons ont été bien classés et avec une probabilité supérieure à 70%. D’un autre côté, on peut observer que le merle noir a tendance à être bien classé même si l’algorithme le confond parfois avec la grive musicienne, qui semble généralement bien classer ses sons.
-                Le chevalier guignette semble aussi attribuer de hautes probabilités pour certains oiseaux différents.
+                Le chevalier guignette semble aussi attribuer de hautes probabilités pour certains oiseaux différents. <hr>
+
                 Certaines de ces erreurs peuvent provenir du pre-processing. Puisque nous isolons les sons en fonction des silences, certains d’entre eux peuvent être découpés de telle sorte qu’ils ne contiennent que du bruit de fond s’il était trop fort ou bien qu’un autre chant d’oiseau était en arrière-plan. De ce fait, il est normal que certains sons soient mal classés.
             </p>
         </div>
