@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     color: black;
+    font-size: medium;
 }
 
 .navbar{
@@ -47,6 +48,8 @@ nav ul li{
 
 nav ul li a{
     color: white;
+     font-size: 16px;
+
 }
 
 a{
